@@ -21,13 +21,13 @@
   </header>
 
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search tools..." onkeyup="liveSearch()" />
+    <input type="text" id="searchInput" placeholder="Search tools..." />
   </div>
 
   <div class="categories">
-    <button onclick="filterTools('all')">All</button>
-    <button onclick="filterTools('customization')">Customization</button>
-    <button onclick="filterTools('optimization')">Optimization</button>
+    <button data-category="all">All</button>
+    <button data-category="customization">Customization</button>
+    <button data-category="optimization">Optimization</button>
   </div>
 
   <div class="tool-section" id="tool-list">
@@ -43,6 +43,56 @@
 
   <div class="footer">&copy; 2025 Winool. All rights reserved.</div>
 
-  <script src="script.js"></script>
+  <script>
+    // Theme toggle
+    document.getElementById('themeSwitcher').addEventListener('change', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // Live search
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', liveSearch);
+
+    function liveSearch() {
+      const input = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll('.tool-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    // Filter buttons
+    const buttons = document.querySelectorAll('.categories button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        filterTools(category);
+      });
+    });
+
+    function filterTools(category) {
+      const cards = document.querySelectorAll('.tool-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Animate cards on hover
+    const cards = document.querySelectorAll('.tool-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'scale(1.05)';
+        card.style.transition = 'transform 0.3s ease';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'scale(1)';
+      });
+    });
+  </script>
 </body>
 </html>
