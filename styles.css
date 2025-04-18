@@ -1,0 +1,190 @@
+/* === Base Reset and Fonts === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #fff;
+  padding: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === Light Mode === */
+body.light {
+  background: linear-gradient(135deg, #ffffff, #f2f2f2);
+  color: #111;
+}
+
+body.light .tool-card {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* === Header === */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.tagline {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #4ade80;
+}
+
+/* === Theme Toggle === */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4ade80;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* === Search Box === */
+.search-box {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+/* === Categories Buttons === */
+.categories {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.categories button {
+  margin: 0.3rem;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.categories button:hover {
+  background-color: #4ade80;
+  color: #111;
+}
+
+body.light .categories button {
+  background-color: #ddd;
+  color: #000;
+}
+
+body.light .categories button:hover {
+  background-color: #4ade80;
+  color: #000;
+}
+
+/* === Tool Cards === */
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tool-card {
+  background: #222;
+  padding: 1.2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* === Footer === */
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .tool-card {
+    width: 95%;
+  }
+
+  .search-box input {
+    width: 90%;
+  }
+}
