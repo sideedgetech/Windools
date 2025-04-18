@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap">
-    <title>Home - Optimization Tools</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winool - Windows Customization & Optimization Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="optimization.html">Optimization Tools</a></li>
-                <li><a href="customization.html">Customization Tools</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero">
-            <h1>Optimize Your Windows Experience</h1>
-            <p>Discover powerful tools to enhance performance and customization.</p>
-            <a href="optimization.html" class="btn">Explore Tools</a>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Your Name. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+  <header>
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="themeSwitcher">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <h1>Winool</h1>
+    <p>The Ultimate Windows Customization & Optimization Directory</p>
+    <div class="tagline">For the people, from the people.</div>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search tools..." onkeyup="liveSearch()" />
+  </div>
+
+  <div class="categories">
+    <button onclick="filterTools('all')">All</button>
+    <button onclick="filterTools('customization')">Customization</button>
+    <button onclick="filterTools('optimization')">Optimization</button>
+  </div>
+
+  <div class="tool-section" id="tool-list">
+    <div class="tool-card" data-category="customization">
+      <h3>Tool Name</h3>
+      <p>Description of a customization tool...</p>
+    </div>
+    <div class="tool-card" data-category="optimization">
+      <h3>Tool Name</h3>
+      <p>Description of an optimization tool...</p>
+    </div>
+  </div>
+
+  <div class="footer">&copy; 2025 Winool. All rights reserved.</div>
+
+  <script src="script.js"></script>
 </body>
 </html>
