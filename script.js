@@ -1,36 +1,34 @@
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
+function filterTools(category) {
+  const cards = document.querySelectorAll('.tool-card');
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
 
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+function liveSearch() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.tool-card');
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(input) ? 'block' : 'none';
+  });
+}
 
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+document.getElementById('themeSwitcher').addEventListener('change', () => {
+  document.body.classList.toggle('light');
 });
 
-// Dark Mode Toggle (Optional)
-const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-};
-
-// Example of adding a button for dark mode toggle
-const darkModeButton = document.createElement('button');
-darkModeButton.innerText = 'Toggle Dark Mode';
-darkModeButton.style.position = 'fixed';
-darkModeButton.style.top = '20px';
-darkModeButton.style.right = '20px';
-darkModeButton.style.padding = '10px';
-darkModeButton.style.backgroundColor = '#ff4081';
-darkModeButton.style.color = '#ffffff';
-darkModeButton.style.border = 'none';
-darkModeButton.style.borderRadius = '5px';
-darkModeButton.style.cursor = 'pointer';
-darkModeButton.addEventListener('click', toggleDarkMode);
-document.body.appendChild(darkModeButton);
+// Add bounce animation on hover
+const cards = document.querySelectorAll('.tool-card');
+cards.forEach(card => {
+  card.addEventListener('mouseover', () => {
+    card.style.transform = 'scale(1.05)';
+  });
+  card.addEventListener('mouseout', () => {
+    card.style.transform = 'scale(1)';
+  });
+});
