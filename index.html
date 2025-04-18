@@ -7,37 +7,105 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .typing {
-      font-size: 3.5rem;
-      font-weight: bold;
-      overflow: hidden;
+    body {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      color: white;
+      background: radial-gradient(circle at top, #0f0f0f, #090909);
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
       white-space: nowrap;
-      border-right: 4px solid #4ade80;
+      overflow: hidden;
+      border-right: .15em solid orange;
       width: 0;
-      animation: typing 2s steps(8, end) forwards, blink 0.75s step-end infinite;
+      animation: typing 3s steps(40, end) forwards, blink .75s step-end infinite;
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 8ch; }
+      from { width: 0 }
+      to { width: 100% }
     }
 
     @keyframes blink {
-      50% { border-color: transparent; }
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+
+    .description {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #111;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #333;
+    }
+
+    nav .cta {
+      background-color: #1a73e8;
+      color: white;
+    }
+
+    .search-box, .categories, .tool-section, .footer {
+      text-align: center;
+      margin: 1rem;
+    }
+
+    .tool-card {
+      background: #1b1b1b;
+      margin: 1rem auto;
+      padding: 1rem;
+      max-width: 600px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#customization">Customization</a>
+    <a href="#optimization">Optimization</a>
+    <a class="cta" href="#suggest">Suggest a Listing</a>
+  </nav>
+
   <header>
-    <div class="theme-toggle">
-      <label class="switch">
-        <input type="checkbox" id="themeSwitcher">
-        <span class="slider"></span>
-      </label>
+    <h1>Windool</h1>
+    <div class="description">
+      Discover the most powerful and community-recommended tools to transform, personalize,
+      and optimize your Windows experience. Whether you're tweaking the look, boosting speed,
+      or automating tasks, Windool has the resources to make Windows truly yours.
     </div>
-    <h1 class="typing">Windool</h1>
-    <p>The Ultimate Windows Customization & Optimization Directory</p>
-    <div class="tagline">For the people, from the people.</div>
   </header>
 
   <div class="search-box">
@@ -65,11 +133,10 @@
 
   <script>
     // Theme toggle
-    document.getElementById('themeSwitcher').addEventListener('change', () => {
+    document.getElementById('themeSwitcher')?.addEventListener('change', () => {
       document.body.classList.toggle('light');
     });
 
-    // Live search
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keyup', liveSearch);
 
@@ -82,7 +149,6 @@
       });
     }
 
-    // Filter buttons
     const buttons = document.querySelectorAll('.categories button');
     buttons.forEach(button => {
       button.addEventListener('click', () => {
@@ -101,18 +167,6 @@
         }
       });
     }
-
-    // Animate cards on hover
-    const cards = document.querySelectorAll('.tool-card');
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.style.transform = 'scale(1.05)';
-        card.style.transition = 'transform 0.3s ease';
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'scale(1)';
-      });
-    });
   </script>
 </body>
 </html>
