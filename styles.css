@@ -6,14 +6,129 @@
 
 body {
     font-family: 'Reem Kufi', sans-serif;
-    background-color: #121212;
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
     color: #ffffff;
     overflow-x: hidden;
 }
 
 header {
-    background-color: #1e1e1e;
+    background-color: rgba(30, 30, 30, 0.9);
     padding: 20px;
     position: fixed;
     width: 100%;
-   
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header:hover {
+    background-color: rgba(30, 30, 30, 1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff4081;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    animation: slideIn 1.2s ease-in-out;
+}
+
+.btn {
+    background-color: #ff4081;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e91e63;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(30, 30, 30, 0.9);
+}
+
+footer p {
+    font-size: 14px;
+}
+
+.tools {
+    padding: 100px 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.tools h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.tools p {
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
