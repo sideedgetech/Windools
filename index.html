@@ -6,117 +6,24 @@
   <title>Windool - Windows Customization & Optimization Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto Mono', monospace;
-      color: white;
-      background: radial-gradient(circle at top, #0f0f0f, #090909);
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: .15em solid orange;
-      width: 0;
-      animation: typing 3s steps(40, end) forwards, blink .75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: orange; }
-    }
-
-    .description {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1rem;
-      background-color: #111;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: #333;
-    }
-
-    nav .cta {
-      background-color: #1a73e8;
-      color: white;
-    }
-
-    .search-box, .categories, .tool-section, .footer {
-      text-align: center;
-      margin: 1rem;
-    }
-
-    .tool-card {
-      background: #1b1b1b;
-      margin: 1rem auto;
-      padding: 1rem;
-      max-width: 600px;
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .tool-card:hover {
-      transform: scale(1.05);
-    }
-  </style>
 </head>
 <body>
-  <nav>
-    <a href="#customization">Customization</a>
-    <a href="#optimization">Optimization</a>
-    <a class="cta" href="#suggest">Suggest a Listing</a>
+  <nav class="navbar">
+    <div class="logo">Windool</div>
+    <div class="nav-links">
+      <a href="#customization">Customization</a>
+      <a href="#optimization">Optimization</a>
+      <button class="suggest-btn">Suggest Your Listing</button>
+    </div>
   </nav>
 
-  <header>
-    <h1>Windool</h1>
-    <div class="description">
-      Discover the most powerful and community-recommended tools to transform, personalize,
-      and optimize your Windows experience. Whether you're tweaking the look, boosting speed,
-      or automating tasks, Windool has the resources to make Windows truly yours.
+  <header class="hero">
+    <h1 class="typing-header"></h1>
+    <p class="hero-description">Discover the best Windows customization utilities, performance boosters, and system optimization tools to elevate your Windows experience. Built for the enthusiasts who like to tweak, modify, and optimize every detail.</p>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search tools..." />
     </div>
   </header>
-
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search tools..." />
-  </div>
-
-  <div class="categories">
-    <button data-category="all">All</button>
-    <button data-category="customization">Customization</button>
-    <button data-category="optimization">Optimization</button>
-  </div>
 
   <div class="tool-section" id="tool-list">
     <div class="tool-card" data-category="customization">
@@ -131,42 +38,6 @@
 
   <div class="footer">&copy; 2025 Windool. All rights reserved.</div>
 
-  <script>
-    // Theme toggle
-    document.getElementById('themeSwitcher')?.addEventListener('change', () => {
-      document.body.classList.toggle('light');
-    });
-
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('keyup', liveSearch);
-
-    function liveSearch() {
-      const input = searchInput.value.toLowerCase();
-      const cards = document.querySelectorAll('.tool-card');
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(input) ? 'block' : 'none';
-      });
-    }
-
-    const buttons = document.querySelectorAll('.categories button');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        filterTools(category);
-      });
-    });
-
-    function filterTools(category) {
-      const cards = document.querySelectorAll('.tool-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
