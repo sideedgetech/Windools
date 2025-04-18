@@ -1,34 +1,30 @@
-function filterTools(category) {
-  const cards = document.querySelectorAll('.tool-card');
-  cards.forEach(card => {
-    if (category === 'all' || card.dataset.category === category) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
 
-function liveSearch() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  const cards = document.querySelectorAll('.tool-card');
-  cards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(input) ? 'block' : 'none';
-  });
-}
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll(".tool-card");
 
-document.getElementById('themeSwitcher').addEventListener('change', () => {
-  document.body.classList.toggle('light');
-});
-
-// Add bounce animation on hover
-const cards = document.querySelectorAll('.tool-card');
-cards.forEach(card => {
-  card.addEventListener('mouseover', () => {
-    card.style.transform = 'scale(1.05)';
+    cards.forEach(card => {
+      const content = card.textContent.toLowerCase();
+      card.style.display = content.includes(filter) ? "block" : "none";
+    });
   });
-  card.addEventListener('mouseout', () => {
-    card.style.transform = 'scale(1)';
+
+  // Some cool dynamic animation glow effect
+  document.addEventListener("mousemove", (e) => {
+    document.body.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY}px, #101010, #000)`;
+  });
+
+  // Bounce in cards on load
+  const cards = document.querySelectorAll(".tool-card");
+  cards.forEach((card, index) => {
+    card.style.opacity = 0;
+    setTimeout(() => {
+      card.style.transition = "all 0.5s ease-out";
+      card.style.transform = "translateY(0)";
+      card.style.opacity = 1;
+    }, index * 100);
   });
 });
